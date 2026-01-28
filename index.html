@@ -744,6 +744,11 @@
             color: var(--warning-color);
         }
 
+        .category-recreation {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
         .project-title {
             font-size: 18px;
             font-weight: 700;
@@ -2277,6 +2282,211 @@
             font-size: 12px;
             color: var(--text-light);
         }
+
+        /* ガントチャート */
+        .gantt-container {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        .gantt-header {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .gantt-task-col {
+            width: 200px;
+            min-width: 200px;
+            font-weight: 600;
+            padding-right: 10px;
+        }
+        .gantt-months {
+            display: flex;
+            flex: 1;
+        }
+        .gantt-month {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .gantt-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .gantt-task-name {
+            width: 200px;
+            min-width: 200px;
+            font-size: 14px;
+            padding-right: 10px;
+        }
+        .gantt-bars {
+            display: flex;
+            flex: 1;
+            position: relative;
+            height: 30px;
+        }
+        .gantt-bar-plan {
+            position: absolute;
+            height: 12px;
+            top: 0;
+            background: var(--accent-color);
+            border-radius: 6px;
+            opacity: 0.6;
+        }
+        .gantt-bar-actual {
+            position: absolute;
+            height: 12px;
+            bottom: 0;
+            background: var(--success-color);
+            border-radius: 6px;
+        }
+        .gantt-legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        .gantt-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .gantt-legend-bar {
+            width: 20px;
+            height: 10px;
+            border-radius: 5px;
+        }
+
+        /* 議事録 */
+        .minutes-section {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .minutes-item {
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+        }
+        .minutes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .minutes-title {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .minutes-date {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        .minutes-visibility {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: var(--bg-color);
+        }
+        .minutes-visibility.public {
+            background: var(--success-light);
+            color: var(--success-color);
+        }
+        .minutes-visibility.private {
+            background: var(--warning-light);
+            color: var(--warning-color);
+        }
+
+        /* ファイルアップロード */
+        .files-section {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .file-upload-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 15px;
+        }
+        .file-upload-zone:hover {
+            border-color: var(--accent-color);
+            background: var(--accent-light);
+        }
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: var(--bg-color);
+            border-radius: var(--radius-sm);
+            gap: 10px;
+        }
+        .file-icon {
+            font-size: 24px;
+        }
+        .file-info {
+            flex: 1;
+        }
+        .file-name {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .file-meta {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        .file-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        /* タブパネル（プロジェクト詳細内） */
+        .detail-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        .detail-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .detail-tab:hover {
+            color: var(--primary-color);
+        }
+        .detail-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .detail-tab-content {
+            display: none;
+        }
+        .detail-tab-content.active {
+            display: block;
+        }
     </style>
     <!-- Supabase JavaScript Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -2366,6 +2576,7 @@
                         <div class="filter-tab active" data-tab="company" onclick="switchTab('company')">全社</div>
                         <div class="filter-tab" data-tab="department" onclick="switchTab('department')">部署</div>
                         <div class="filter-tab" data-tab="other" onclick="switchTab('other')">その他</div>
+                        <div class="filter-tab" data-tab="recreation" onclick="switchTab('recreation')">レクリエーション</div>
                     </div>
                 </div>
 
@@ -2676,6 +2887,7 @@
                             <option value="company">全社プロジェクト</option>
                             <option value="department">部署プロジェクト</option>
                             <option value="other">その他（社員活動）</option>
+                            <option value="recreation">レクリエーション</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -2846,6 +3058,7 @@
                             <option value="company">全社プロジェクト</option>
                             <option value="department">部署プロジェクト</option>
                             <option value="other">その他（社員活動）</option>
+                            <option value="recreation">レクリエーション</option>
                         </select>
                     </div>
 
@@ -2972,8 +3185,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>① 上長（自動設定）</label>
-                            <input type="text" id="userProjectManager" disabled>
+                            <label>① 上長（手動選択） *</label>
+                            <select id="userProjectManager" required>
+                                <option value="">-- 選択してください --</option>
+                            </select>
+                            <p class="form-hint">第一承認者となる上長を選択してください</p>
                         </div>
                         <div class="form-group">
                             <label>② プロジェクト承認者 *</label>
@@ -3260,6 +3476,20 @@
                 comments: [
                     { author: '山田太郎', text: '来週からシステム設計のレビューを開始します。参加希望の方はお知らせください。', date: '2024/01/15' },
                     { author: '佐藤花子', text: '業務フローの整理が完了しました。資料をSharePointにアップロードしています。', date: '2024/01/12' },
+                ],
+                gantt: [
+                    { task: '要件定義', planStart: 1, planEnd: 2, actualStart: 1, actualEnd: 2 },
+                    { task: '設計', planStart: 2, planEnd: 3, actualStart: 2, actualEnd: 3 },
+                    { task: '開発', planStart: 3, planEnd: 4, actualStart: 3, actualEnd: null },
+                    { task: 'テスト', planStart: 4, planEnd: 4, actualStart: null, actualEnd: null }
+                ],
+                minutes: [
+                    { id: 1, title: 'キックオフミーティング', date: '2024/01/05', content: 'プロジェクトの目的と体制を確認。', visibility: 'public' },
+                    { id: 2, title: '進捗報告会', date: '2024/01/20', content: '要件定義完了、設計フェーズ開始。', visibility: 'members' }
+                ],
+                files: [
+                    { id: 1, name: '要件定義書.docx', size: '2.5MB', uploadedBy: '山田太郎', date: '2024/01/10' },
+                    { id: 2, name: 'プロジェクト計画.xlsx', size: '1.2MB', uploadedBy: '佐藤花子', date: '2024/01/08' }
                 ]
             },
             {
@@ -3409,7 +3639,7 @@
             },
             {
                 id: 9,
-                category: 'other',
+                category: 'recreation',
                 title: 'フットサル部',
                 description: '週末に集まってフットサルを楽しむ部活動です。初心者大歓迎！運動不足解消にぜひ参加してください。',
                 image: '⚽',
@@ -3428,7 +3658,7 @@
             },
             {
                 id: 10,
-                category: 'other',
+                category: 'recreation',
                 title: 'ランニング部',
                 description: '朝活ランニングやマラソン大会への参加を行う部活動です。一緒に走りましょう！',
                 image: '🏃',
@@ -3445,7 +3675,7 @@
             },
             {
                 id: 11,
-                category: 'other',
+                category: 'recreation',
                 title: '写真部',
                 description: '写真撮影を趣味とするメンバーが集まる部活動です。撮影会や作品発表会を開催しています。',
                 image: '📷',
@@ -3682,9 +3912,12 @@
                 } else if (project.category === 'department') {
                     categoryClass = 'category-department';
                     categoryLabel = '部署';
+                } else if (project.category === 'recreation') {
+                    categoryClass = 'category-recreation';
+                    categoryLabel = 'レクリエーション';
                 } else {
                     categoryClass = 'category-other';
-                    categoryLabel = '社員活動';
+                    categoryLabel = 'その他';
                 }
 
                 let statusClass = '';
@@ -3761,9 +3994,12 @@
             } else if (selectedProject.category === 'department') {
                 categoryClass = 'category-department';
                 categoryLabel = '部署プロジェクト';
+            } else if (selectedProject.category === 'recreation') {
+                categoryClass = 'category-recreation';
+                categoryLabel = 'レクリエーション';
             } else {
                 categoryClass = 'category-other';
-                categoryLabel = '社員活動';
+                categoryLabel = 'その他';
             }
 
             let statusClass = '';
@@ -3870,11 +4106,51 @@
                         `).join('')}
                     </div>
                     ` : ''}
+
+                    <!-- タブセクション -->
+                    <div class="detail-tabs" style="margin-top: 24px;">
+                        <div class="detail-tab active" onclick="switchDetailTab('gantt', ${selectedProject.id})">ガントチャート</div>
+                        <div class="detail-tab" onclick="switchDetailTab('minutes', ${selectedProject.id})">議事録</div>
+                        <div class="detail-tab" onclick="switchDetailTab('files', ${selectedProject.id})">ファイル</div>
+                    </div>
+
+                    <div id="detailTabGantt" class="detail-tab-content active">
+                        ${renderGanttChart(selectedProject)}
+                    </div>
+
+                    <div id="detailTabMinutes" class="detail-tab-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="margin: 0;">議事録一覧</h4>
+                            <button class="btn btn-sm btn-outline" onclick="openAddMinutesModal(${selectedProject.id})">+ 追加</button>
+                        </div>
+                        ${renderMinutes(selectedProject)}
+                    </div>
+
+                    <div id="detailTabFiles" class="detail-tab-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="margin: 0;">ファイル一覧</h4>
+                            <label class="btn btn-sm btn-outline" style="cursor: pointer;">
+                                + アップロード
+                                <input type="file" hidden accept=".docx,.xlsx,.pptx,.pdf" onchange="handleProjectFileUpload(event, ${selectedProject.id})">
+                            </label>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-light); margin-bottom: 10px;">許可形式: .docx, .xlsx, .pptx, .pdf（最大10MB、動画不可）</p>
+                        ${renderFiles(selectedProject)}
+                    </div>
                 </div>
                 <div class="detail-panel-footer">
                     ${buttonHtml}
                 </div>
             `;
+        }
+
+        // 詳細タブ切り替え
+        function switchDetailTab(tabName, projectId) {
+            document.querySelectorAll('.detail-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.detail-tab-content').forEach(c => c.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById('detailTab' + tabName.charAt(0).toUpperCase() + tabName.slice(1)).classList.add('active');
         }
 
         // 申請モーダルを開く
@@ -4602,21 +4878,36 @@
             if (!currentUser) return;
 
             document.getElementById('userProjectForm').reset();
-            document.getElementById('userProjectManager').value = currentUser.managerName || '（上長未設定）';
+
+            // 上長選択ドロップダウンを設定（手動選択）
+            const managerSelect = document.getElementById('userProjectManager');
+            managerSelect.innerHTML = '<option value="">-- 選択してください --</option>';
+
+            // マネージャー権限を持つユーザーを取得（自分以外）
+            const managersForApproval = users.filter(u =>
+                u.role === 'manager' &&
+                u.id !== currentUser.id &&
+                u.status === 'active'
+            ).sort((a, b) => a.departmentName.localeCompare(b.departmentName));
+
+            managersForApproval.forEach(m => {
+                const option = document.createElement('option');
+                option.value = m.id;
+                option.textContent = `${m.name}（${m.departmentName}）`;
+                managerSelect.appendChild(option);
+            });
+
+            // デフォルトで自分の上長を選択
+            if (currentUser.managerId) {
+                managerSelect.value = currentUser.managerId;
+            }
 
             // PJ承認者のドロップダウンを設定（マネージャー権限を持つユーザー）
             const approverSelect = document.getElementById('userProjectApprover');
             approverSelect.innerHTML = '<option value="">-- 選択してください --</option>';
 
-            // マネージャー権限を持つユーザーを取得（自分と自分の上長以外）
-            const managers = users.filter(u =>
-                u.role === 'manager' &&
-                u.id !== currentUser.id &&
-                u.id !== currentUser.managerId &&
-                u.status === 'active'
-            ).sort((a, b) => a.departmentName.localeCompare(b.departmentName));
-
-            managers.forEach(m => {
+            // マネージャー権限を持つユーザーを取得（自分以外）
+            managersForApproval.forEach(m => {
                 const option = document.createElement('option');
                 option.value = m.id;
                 option.textContent = `${m.name}（${m.departmentName}）`;
@@ -4924,6 +5215,8 @@
             const endDate = document.getElementById('userProjectEndDate').value;
             const skills = document.getElementById('userProjectSkills').value.split(',').map(s => s.trim()).filter(s => s);
 
+            // 上長（手動選択）を取得
+            const managerId = document.getElementById('userProjectManager').value;
             // PJ承認者を取得
             const approverId = document.getElementById('userProjectApprover').value;
 
@@ -4932,13 +5225,20 @@
                 return;
             }
 
-            if (!currentUser.managerId) {
-                alert('上長が設定されていないため、申請できません。管理者にお問い合わせください。');
+            if (!managerId) {
+                alert('上長（第一承認者）を選択してください');
                 return;
             }
 
             if (!approverId) {
                 alert('プロジェクト承認者を選択してください');
+                return;
+            }
+
+            // 上長の情報を取得
+            const manager = users.find(u => u.id === managerId);
+            if (!manager) {
+                alert('上長が見つかりません');
                 return;
             }
 
@@ -4977,10 +5277,10 @@
                 workflowHistory: [
                     { action: 'submit', by: currentUser.name, date: `${dateStr} ${timeStr}`, comment: 'プロジェクト企画を申請しました' }
                 ],
-                // 上長情報
-                managerId: currentUser.managerId,
-                managerName: currentUser.managerName,
-                managerEmail: currentUser.managerEmail,
+                // 上長情報（手動選択）
+                managerId: manager.id,
+                managerName: manager.name,
+                managerEmail: manager.email,
                 // PJ承認者情報
                 approverId: approver.id,
                 approverName: approver.name,
@@ -5845,6 +6145,223 @@
             } catch (err) {
                 console.error('Failed to save comment:', err);
             }
+        }
+
+        // ========== ガントチャート機能 ==========
+
+        // ガントチャートを表示
+        function renderGanttChart(project) {
+            if (!project.gantt || project.gantt.length === 0) {
+                return '<p style="color: var(--text-secondary);">ガントチャートデータがありません</p>';
+            }
+
+            const months = ['1月', '2月', '3月', '4月'];
+            let html = `
+                <div class="gantt-container">
+                    <div class="gantt-header">
+                        <div class="gantt-task-col">タスク</div>
+                        <div class="gantt-months">
+                            ${months.map(m => `<div class="gantt-month">${m}</div>`).join('')}
+                        </div>
+                    </div>
+            `;
+
+            project.gantt.forEach(item => {
+                const planLeft = ((item.planStart - 1) / 4) * 100;
+                const planWidth = ((item.planEnd - item.planStart + 1) / 4) * 100;
+                const actualLeft = item.actualStart ? ((item.actualStart - 1) / 4) * 100 : 0;
+                const actualWidth = item.actualEnd ? ((item.actualEnd - item.actualStart + 1) / 4) * 100 : 0;
+
+                html += `
+                    <div class="gantt-row">
+                        <div class="gantt-task-name">${item.task}</div>
+                        <div class="gantt-bars">
+                            <div class="gantt-bar-plan" style="left: ${planLeft}%; width: ${planWidth}%;"></div>
+                            ${item.actualStart ? `<div class="gantt-bar-actual" style="left: ${actualLeft}%; width: ${actualWidth}%;"></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    <div class="gantt-legend">
+                        <div class="gantt-legend-item">
+                            <div class="gantt-legend-bar" style="background: var(--accent-color); opacity: 0.6;"></div>
+                            <span>予定(Plan)</span>
+                        </div>
+                        <div class="gantt-legend-item">
+                            <div class="gantt-legend-bar" style="background: var(--success-color);"></div>
+                            <span>実績(Do)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return html;
+        }
+
+        // ========== 議事録機能 ==========
+
+        // 議事録一覧を表示
+        function renderMinutes(project) {
+            if (!project.minutes || project.minutes.length === 0) {
+                return '<p style="color: var(--text-secondary);">議事録がありません</p>';
+            }
+
+            let html = '<div class="minutes-section">';
+            project.minutes.forEach(m => {
+                const visClass = m.visibility === 'public' ? 'public' : 'private';
+                const visLabel = m.visibility === 'public' ? '公開' : 'メンバーのみ';
+                html += `
+                    <div class="minutes-item">
+                        <div class="minutes-header">
+                            <div>
+                                <div class="minutes-title">${m.title}</div>
+                                <div class="minutes-date">${m.date}</div>
+                            </div>
+                            <span class="minutes-visibility ${visClass}">${visLabel}</span>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-secondary);">${m.content}</p>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            return html;
+        }
+
+        // 議事録追加モーダル
+        function openAddMinutesModal(projectId) {
+            const content = `
+                <div class="form-group">
+                    <label>タイトル *</label>
+                    <input type="text" id="minutesTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>内容 *</label>
+                    <textarea id="minutesContent" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>公開設定</label>
+                    <select id="minutesVisibility">
+                        <option value="public">公開</option>
+                        <option value="members">メンバーのみ</option>
+                    </select>
+                </div>
+            `;
+            document.getElementById('modalTitle').textContent = '議事録を追加';
+            document.getElementById('modalBody').innerHTML = content;
+            document.getElementById('applyBtn').textContent = '保存';
+            document.getElementById('applyBtn').onclick = function() { saveMinutes(projectId); };
+            document.getElementById('modalOverlay').classList.add('show');
+        }
+
+        function saveMinutes(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            if (!project.minutes) project.minutes = [];
+
+            const newMinutes = {
+                id: project.minutes.length + 1,
+                title: document.getElementById('minutesTitle').value,
+                date: new Date().toLocaleDateString('ja-JP'),
+                content: document.getElementById('minutesContent').value,
+                visibility: document.getElementById('minutesVisibility').value
+            };
+
+            project.minutes.unshift(newMinutes);
+            closeModal();
+            if (selectedProject && selectedProject.id === projectId) {
+                showProjectInPanel(projectId);
+            }
+        }
+
+        // ========== ファイルアップロード機能 ==========
+
+        // 許可されたファイル拡張子
+        const ALLOWED_EXTENSIONS = ['.docx', '.xlsx', '.pptx', '.pdf'];
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+        // ファイル一覧を表示
+        function renderFiles(project) {
+            if (!project.files || project.files.length === 0) {
+                return '<p style="color: var(--text-secondary);">アップロードされたファイルがありません</p>';
+            }
+
+            let html = '<div class="file-list">';
+            project.files.forEach(f => {
+                const ext = f.name.split('.').pop().toLowerCase();
+                let icon = '📄';
+                if (ext === 'xlsx') icon = '📊';
+                else if (ext === 'docx') icon = '📝';
+                else if (ext === 'pptx') icon = '📑';
+                else if (ext === 'pdf') icon = '📕';
+
+                html += `
+                    <div class="file-item">
+                        <div class="file-icon">${icon}</div>
+                        <div class="file-info">
+                            <div class="file-name">${f.name}</div>
+                            <div class="file-meta">${f.size} • ${f.uploadedBy} • ${f.date}</div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn btn-sm btn-outline" onclick="downloadFile(${f.id})">DL</button>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            return html;
+        }
+
+        // ファイルアップロード処理
+        function handleProjectFileUpload(event, projectId) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // 拡張子チェック
+            const ext = '.' + file.name.split('.').pop().toLowerCase();
+            if (!ALLOWED_EXTENSIONS.includes(ext)) {
+                alert('許可されていないファイル形式です。\n許可形式: ' + ALLOWED_EXTENSIONS.join(', '));
+                return;
+            }
+
+            // サイズチェック
+            if (file.size > MAX_FILE_SIZE) {
+                alert('ファイルサイズは10MB以下にしてください。');
+                return;
+            }
+
+            // 動画ファイルチェック
+            if (file.type.startsWith('video/')) {
+                alert('動画ファイルはアップロードできません。');
+                return;
+            }
+
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            if (!project.files) project.files = [];
+
+            const newFile = {
+                id: project.files.length + 1,
+                name: file.name,
+                size: (file.size / 1024 / 1024).toFixed(2) + 'MB',
+                uploadedBy: currentUser ? currentUser.name : '不明',
+                date: new Date().toLocaleDateString('ja-JP')
+            };
+
+            project.files.push(newFile);
+
+            if (selectedProject && selectedProject.id === projectId) {
+                showProjectInPanel(projectId);
+            }
+
+            alert('ファイルをアップロードしました: ' + file.name);
+        }
+
+        function downloadFile(fileId) {
+            alert('ファイルダウンロード機能（デモ）');
         }
 
         // 初期化時にSupabaseからデータを読み込む
