@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロジェクトポータル 利用マニュアル - ベステラ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-color: #2d3a4a; --accent-color: #4a7c9b; --success-color: #2e7d5a; --warning-color: #b8860b; --bg-color: #f7f6f4; --text-primary: #1a1a1a; --text-secondary: #4a5568; --border-color: #e2e0dc; }
+        body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans JP, sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.8; font-size: 16px; }
+        .header { background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); color: white; padding: 40px 20px; text-align: center; }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { font-size: 16px; opacity: 0.9; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .section h2 { font-size: 22px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid var(--accent-color); }
+        .section h3 { font-size: 18px; margin: 24px 0 12px; color: var(--primary-color); }
+        .section p { margin-bottom: 16px; color: var(--text-secondary); }
+        .point { background: #e6f0f5; border-left: 4px solid var(--accent-color); padding: 16px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+        .point-title { font-weight: bold; color: var(--accent-color); margin-bottom: 8px; }
+        .warning { background: #fff8e6; border-left: 4px solid var(--warning-color); padding: 16px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+        .warning-title { font-weight: bold; color: var(--warning-color); margin-bottom: 8px; }
+        .steps { counter-reset: step; }
+        .step { display: flex; gap: 16px; margin-bottom: 20px; padding: 16px; background: var(--bg-color); border-radius: 8px; }
+        .step-number { counter-increment: step; background: var(--success-color); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        .step-number::before { content: counter(step); }
+        .step-content { flex: 1; }
+        .step-content strong { display: block; margin-bottom: 4px; }
+        .nav-guide { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0; }
+        .nav-guide-item { background: var(--bg-color); padding: 16px; border-radius: 8px; text-align: center; }
+        .nav-guide-icon { font-size: 32px; margin-bottom: 8px; }
+        .nav-guide-label { font-weight: bold; margin-bottom: 4px; }
+        .nav-guide-desc { font-size: 13px; color: var(--text-secondary); }
+        .gantt-demo { background: var(--bg-color); border-radius: 8px; padding: 20px; margin: 16px 0; }
+        .gantt-bar-sample { width: 60px; height: 12px; border-radius: 4px; display: inline-block; margin-right: 8px; }
+        .gantt-bar-plan { background: var(--accent-color); }
+        .gantt-bar-actual { background: var(--success-color); }
+        .faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
+        .faq-q { font-weight: bold; color: var(--primary-color); margin-bottom: 8px; }
+        .faq-a { padding-left: 20px; color: var(--text-secondary); }
+        .footer { text-align: center; padding: 40px 20px; color: var(--text-secondary); font-size: 14px; }
+        .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--primary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 24px; }
+        @media (max-width: 600px) { .nav-guide { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header"><h1>プロジェクトポータル 利用マニュアル</h1><p>ベステラ株式会社 全社員向けガイド</p></header>
+    <div class="container">
+        <nav class="section" id="top"><h2>目次</h2><ul><li><a href="#about">1. プロジェクトポータルとは</a></li><li><a href="#login">2. ログイン方法</a></li><li><a href="#home">3. ホーム画面の見方</a></li><li><a href="#detail">4. プロジェクト詳細の見方</a></li><li><a href="#join">5. プロジェクトに参加する</a></li><li><a href="#create">6. 新しいプロジェクトを企画する</a></li><li><a href="#gantt">7. ガントチャートの使い方</a></li><li><a href="#minutes">8. 議事録の使い方</a></li><li><a href="#files">9. ファイルのアップロード</a></li><li><a href="#faq">10. よくある質問</a></li></ul></nav>
+        <section class="section" id="about"><h2>1. プロジェクトポータルとは</h2><p>プロジェクトポータルは、ベステラ社内のプロジェクトや活動を見つけて参加できるWebサービスです。</p><div class="point"><div class="point-title">こんなことができます</div><ul><li>社内で募集中のプロジェクトを探す</li><li>興味のあるプロジェクトに参加申請する</li><li>新しいプロジェクトを企画・申請する</li><li>プロジェクトの進捗をガントチャートで確認する</li><li>議事録やファイルを共有する</li></ul></div></section>
+        <section class="section" id="login"><h2>2. ログイン方法</h2><div class="steps"><div class="step"><div class="step-number"></div><div class="step-content"><strong>社員番号を入力</strong>あなたの社員番号を入力してください</div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>パスワードを入力</strong>初期パスワードは「0001」です</div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>「ログイン」ボタンをタップ</strong></div></div></div></section>
+        <section class="section" id="home"><h2>3. ホーム画面の見方</h2><h3>下部ナビゲーション</h3><div class="nav-guide"><div class="nav-guide-item"><div class="nav-guide-icon">🏠</div><div class="nav-guide-label">ホーム</div><div class="nav-guide-desc">全プロジェクト一覧</div></div><div class="nav-guide-item"><div class="nav-guide-icon">📁</div><div class="nav-guide-label">参加中</div><div class="nav-guide-desc">自分が参加しているPJ</div></div><div class="nav-guide-item"><div class="nav-guide-icon">✏️</div><div class="nav-guide-label">企画申請</div><div class="nav-guide-desc">新しいPJを作成</div></div><div class="nav-guide-item"><div class="nav-guide-icon">🔔</div><div class="nav-guide-label">通知</div><div class="nav-guide-desc">お知らせ</div></div></div></section>
+        <section class="section" id="detail"><h2>4. プロジェクト詳細の見方</h2><p>プロジェクトカードをタップすると、詳細画面が表示されます。</p><div class="nav-guide"><div class="nav-guide-item"><div class="nav-guide-icon">📋</div><div class="nav-guide-label">概要</div><div class="nav-guide-desc">基本情報</div></div><div class="nav-guide-item"><div class="nav-guide-icon">👥</div><div class="nav-guide-label">メンバー</div><div class="nav-guide-desc">参加者一覧</div></div><div class="nav-guide-item"><div class="nav-guide-icon">📊</div><div class="nav-guide-label">進捗</div><div class="nav-guide-desc">ガントチャート</div></div><div class="nav-guide-item"><div class="nav-guide-icon">📝</div><div class="nav-guide-label">議事録</div><div class="nav-guide-desc">会議記録</div></div></div></section>
+        <section class="section" id="join"><h2>5. プロジェクトに参加する</h2><div class="steps"><div class="step"><div class="step-number"></div><div class="step-content"><strong>参加したいプロジェクトをタップ</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>内容を確認</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>「参加申請」ボタンをタップ</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>申請完了！承認を待ちます</strong></div></div></div></section>
+        <section class="section" id="create"><h2>6. 新しいプロジェクトを企画する</h2><div class="steps"><div class="step"><div class="step-number"></div><div class="step-content"><strong>「企画申請」をタップ</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>必要事項を入力</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>承認者を選択</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>「申請する」をタップ</strong></div></div></div><div class="point"><div class="point-title">承認フロー</div>申請 → 上長承認 → システム管理者承認 → 公開</div></section>
+        <section class="section" id="gantt"><h2>7. ガントチャートの使い方</h2><p>ガントチャートは、プロジェクトの進捗を視覚的に確認できるツールです。</p><div class="gantt-demo"><span class="gantt-bar-sample gantt-bar-plan"></span>予定（Plan）<br><span class="gantt-bar-sample gantt-bar-actual"></span>実績（Do）</div><div class="point"><div class="point-title">見方のポイント</div><ul><li><strong>青いバー（上）</strong>：予定した期間</li><li><strong>緑のバー（下）</strong>：実際に作業した期間</li><li><strong>緑が青より短い</strong>：予定より遅れている</li><li><strong>緑が青と同じか長い</strong>：予定通りまたは前倒し</li></ul></div><div class="warning"><div class="warning-title">編集について</div>ガントチャートの編集は、プロジェクトリーダーのみ行えます。</div></section>
+        <section class="section" id="minutes"><h2>8. 議事録の使い方</h2><div class="steps"><div class="step"><div class="step-number"></div><div class="step-content"><strong>「議事録」タブをタップ</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>「＋ 議事録を追加」で新規作成</strong></div></div><div class="step"><div class="step-number"></div><div class="step-content"><strong>内容を入力して保存</strong></div></div></div><div class="point"><div class="point-title">公開範囲</div><ul><li><strong>全体公開</strong>：誰でも閲覧可能</li><li><strong>メンバーのみ</strong>：プロジェクトメンバーだけ閲覧可能</li></ul></div></section>
+        <section class="section" id="files"><h2>9. ファイルのアップロード</h2><div class="point"><div class="point-title">アップロードできるファイル</div><ul><li><strong>.docx</strong> - Word文書</li><li><strong>.xlsx</strong> - Excel表</li><li><strong>.pptx</strong> - PowerPointスライド</li><li><strong>.pdf</strong> - PDFファイル</li></ul></div><div class="warning"><div class="warning-title">アップロードできないファイル</div><ul><li><strong>動画ファイル</strong>（.mp4, .mov, .avi など）は不可</li><li><strong>10MB以上</strong>のファイルは不可</li></ul></div></section>
+        <section class="section" id="faq"><h2>10. よくある質問</h2><div class="faq-item"><div class="faq-q">Q: ログインできません</div><div class="faq-a">社員番号とパスワードをご確認ください。初期パスワードは「0001」です。</div></div><div class="faq-item"><div class="faq-q">Q: 参加申請の結果はどこで確認できますか？</div><div class="faq-a">下部ナビの「通知」から確認できます。</div></div><div class="faq-item"><div class="faq-q">Q: ガントチャートを編集したいのですが</div><div class="faq-a">プロジェクトリーダーのみ編集できます。</div></div><div class="faq-item"><div class="faq-q">Q: ファイルがアップロードできません</div><div class="faq-a">ファイル形式（.docx, .xlsx, .pptx, .pdfのみ）とサイズ（10MB以下）をご確認ください。</div></div></section>
+        <section class="section"><h2>お問い合わせ</h2><div class="point"><div class="point-title">システム管理者</div><strong>脱炭素事業推進部</strong><br>メール: h.hasebe@besterra.co.jp</div></section>
+    </div>
+    <footer class="footer"><p>© 2026 ベステラ株式会社</p><p>プロジェクトポータル 利用マニュアル v1.0</p></footer>
+    <a href="#top" class="back-to-top">↑</a>
+</body>
+</html>
